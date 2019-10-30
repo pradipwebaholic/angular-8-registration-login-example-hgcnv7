@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appRoutingModule } from './app.routing';
@@ -10,6 +11,7 @@ import { LoginComponent } from './login';
 import { AlertComponent } from './_components';
 import {SharedModule} from './shared/shared.module';
 import { AppService } from './_services/app.service';
+
 @NgModule({
     imports: [
         BrowserModule,
