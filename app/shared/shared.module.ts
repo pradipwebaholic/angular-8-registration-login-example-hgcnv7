@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -9,6 +9,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CcTableComponent } from './c/cc-table/cc-table.component';
+import { AlertService, AuthenticationService } from '../_services';
 
 @NgModule({
   imports: [
@@ -34,6 +35,13 @@ import { CcTableComponent } from './c/cc-table/cc-table.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule,CcTableComponent,CommonModule]
+    MatInputModule,CcTableComponent,CommonModule,]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [AuthenticationService  ]
+    };
+  }
+}

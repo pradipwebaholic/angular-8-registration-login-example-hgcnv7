@@ -1,5 +1,5 @@
 import { Component, OnInit ,ChangeDetectorRef} from '@angular/core';
-import { Observable ,Subscription } from 'rxjs';
+import { Observable ,Subscription,  } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '../../_services';
 @Component({
@@ -13,8 +13,10 @@ export class HomeComponent implements OnInit {
 
   currentUserSubscription:Subscription;
   constructor(private auth:AuthenticationService, private cd: ChangeDetectorRef) { 
-       this.currentUserSubscription = this.auth.currentUser.subscribe(user => {
-            this.userData = user;
+    
+     this.currentUserSubscription = this.auth.currentUser.subscribe(user2 => {
+            this.userData = user2;
+           // this.cd.detectChanges();
             
         });
        
@@ -22,6 +24,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
    //this.userData= JSON.parse(localStorage.getItem('currentUser'));
+    
+     
   }
   changeHeight():void {
    

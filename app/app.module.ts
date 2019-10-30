@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login';
 import { AlertComponent } from './_components';
 import {SharedModule} from './shared/shared.module';
-import { AppService } from './_services/app.service';
+import { AppService } from './_services';
 
 @NgModule({
     imports: [
@@ -19,7 +19,7 @@ import { AppService } from './_services/app.service';
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-        SharedModule
+        SharedModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -28,7 +28,7 @@ import { AppService } from './_services/app.service';
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 
         
     ],

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule} from './home.routing.module';
 import { SharedModule } from './../../shared/shared.module';
+import { AlertService, AuthenticationService } from '../../_services';
 import {ObserversModule} from '@angular/cdk/observers';
 
 
@@ -10,6 +11,7 @@ import {ObserversModule} from '@angular/cdk/observers';
   imports: [
     CommonModule, HomeRoutingModule,SharedModule,ObserversModule
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent],
+  providers:[AuthenticationService]
 })
 export class HomeModule { }
