@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ChangeDetectorRef} from '@angular/core';
 import { Observable ,Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '../../_services';
@@ -9,9 +9,10 @@ import { AlertService, AuthenticationService } from '../../_services';
 })
 export class HomeComponent implements OnInit {
   userData:any=[];
+  isLoding:boolean=true;
 
   currentUserSubscription:Subscription;
-  constructor(private auth:AuthenticationService) { 
+  constructor(private auth:AuthenticationService, private cd: ChangeDetectorRef) { 
        this.currentUserSubscription = this.auth.currentUser.subscribe(user => {
             this.userData = user;
             
@@ -30,9 +31,10 @@ export class HomeComponent implements OnInit {
     
     this.count+=1;
     if(this.count>1){
-      console.log("Changed");
+        console.log(this.isLoding);
+       if(this.isLoding==true) { (this.isLoding= false); this.cd.detectChanges(); console.log("changed");}
     }
-    
+    //this.cd.detectChanges();
   }
    ngOnDestroy() {
         // unsubscribe to ensure no memory leaks
